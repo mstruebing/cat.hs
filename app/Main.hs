@@ -1,9 +1,10 @@
 module Main where
 
 import Lib
+import System.Environment (getArgs)
 
 main :: IO ()
-main = printFileWithLineNumbers "/home/maex/projects/own/cat/app/Main.hs"
+main = getArgs >>= mapM_ printFileWithLineNumbers
 
 printFile :: FilePath -> IO ()
 printFile filePath = readFile filePath >>= putStr
