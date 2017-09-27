@@ -1,6 +1,7 @@
 module Lib
     ( printFile
     , printFileWithLineNumbers
+    , printHelp
     ) where
 
 printFile :: FilePath -> IO ()
@@ -11,3 +12,9 @@ printFileWithLineNumbers filePath = readFile filePath >>= mapM_ (\x -> putStrLn 
 
 generateNumberedList :: String -> [(Int, String)]
 generateNumberedList = zip [1 ..] . lines
+
+printHelp :: IO ()
+printHelp = do
+    putStrLn "USAGE: cat [OPTION] [FILE]"
+    putStrLn "    -n         show line numbers"
+    putStrLn "    -h, --help show this help text"
